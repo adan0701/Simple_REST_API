@@ -1,22 +1,27 @@
 [
     {
         "text": "La vie est un mystère qu'il faut vivre, et non un problème à résoudre.",
-        "author": "Gandhi"
+        "author": "Gandhi",
+        "id": 1
     },
     {
         "text": "Le succès, c'est d'aller d'échec en échec sans perdre son enthousiasme.",
-        "author": "Winston Churchill"
+        "author": "Winston Churchill",
+        "id": 2
     },
     {
         "text": "Ils ne savaient pas que c'était impossible, alors ils l'ont fait.",
-        "author": "Mark Twain"
+        "author": "Mark Twain",
+        "id": 3
     },
     {
         "text": "Le bonheur n'est pas quelque chose de prêt à l'emploi. Il vient de vos propres actions.",
-        "author": "Dalaï-Lama"
+        "author": "Dalaï-Lama",
+        "id": 4
     },
     {
         "text": "Choisis un travail que tu aimes, et tu n'auras pas à travailler un seul jour de ta vie.",
-        "author": "Confucius"
+        "author": "Confucius",
+        "id": 5
     }
 ]

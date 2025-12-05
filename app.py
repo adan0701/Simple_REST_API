@@ -28,6 +28,10 @@ def add_quote():
     for key in new_quote:
         if key not in allowed_keys:
             abort(400)
+
+    existing_ids = [quote["id"] for quote in quotes]  
+    new_id = max(existing_ids) + 1
+    new_quote["id"] = new_id
     
     quotes.append(new_quote)
 

@@ -15,18 +15,19 @@
 ### /quote/all :
 
 - Méthode : GET
-- Retourne toutes les citations au format JSON : "text" et "author" (*Voir format base de données JSON*).
+- Retourne toutes les citations au format JSON : "text", "author" et "id" (*Voir format base de données JSON*).
 
 ### /quote/random : 
 
 - Méthode : GET
-- Retourne une citation aléatoire au format JSON : "text" et "author" (*Voir format base de données JSON*).
+- Retourne une citation aléatoire au format JSON : "text", "author" et "id" (*Voir format base de données JSON*).
 
 ### /quote/add : 
 
 - Méthode : POST
 - Ajoute la citation fournie dans la requête qui doit être au format JSON (*Voir format base de données JSON*).
 - Retourne "Citation ajoutée" si la requête s'est exécutée sans erreur.
+- Incremente l'id automatiquement.
 - Retourne une erreur 400 si les conditions suivantes ne sont pas remplies : 
     - Il y a une requête avec un fichier json
     - Les clés "text" et "author" et uniquement celle-ci sont présentes
@@ -57,18 +58,20 @@
 [
     {
         "text": "Citation",
-        "author": "Auteur"
+        "author": "Auteur",
+        "id": 0
     }
 ]
 ```
 
 ## Exemple d'utilisation : 
 
-`127.0.0.1:5000/heath` retournera : 
+`127.0.0.1:5000/quote/random` retournera : 
 
 ```json
 {
-    "status": "ok",
-    "count": 5
+  "author": "Confucius",
+  "id": 5,
+  "text": "Choisis un travail que tu aimes, et tu n'auras pas à travailler un seul jour de ta vie."
 }
 ```
