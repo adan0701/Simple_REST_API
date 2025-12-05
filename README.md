@@ -75,3 +75,9 @@
   "text": "Choisis un travail que tu aimes, et tu n'auras pas à travailler un seul jour de ta vie."
 }
 ```
+## Librairie nécessaire :
+- Flask
+- Random
+- JSON
+
+Toutes les librairies nécessaires peuvent être ajoutées à l'aide de `pip` et du fichier `requirements.txt`
