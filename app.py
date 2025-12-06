@@ -75,24 +75,21 @@ def modify_citation_by_id(id):
     
     return jsonify({"message": "Citation modified"})
 
-'''
+
 @app.delete("/quotes/<id>")
 def delete_by_id(id):
     i = 0
     for key in quotes:
         i += 1
-        print(key)
-        print(i)
-        if key["id"] == id:
+        if key['id'] == int(id):
             quotes.pop(i-1)
-            print("pop")
+            break
 
-    print(quotes)
     with open("quotes.json", "w", encoding="utf-8") as f:
         json.dump(quotes, f, indent=4, ensure_ascii=False)
 
     return jsonify({"message": "Citation deleted"})
-'''
+
 
 @app.get("/health")
 def health():

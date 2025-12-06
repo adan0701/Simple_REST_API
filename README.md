@@ -11,6 +11,7 @@
 - /quotes/random (GET)
 - /quotes/add (POST)
 - /quotes/<id> (PATCH)
+- /quotes/<id> (DELETE)
 - /health (GET)
 
 ### /quotes :
@@ -44,6 +45,11 @@
     - Les clés "text" et/ou "author" et uniquement celle-ci sont présentes
     - La/les clés ci-dessus ne sont pas vides
 
+
+### /quotes/<id> : 
+
+- Méthode : DELETE
+- Supprime la citation avec l'id dans la requête, l'id est nécessaire.
 
 ### /health : 
 
