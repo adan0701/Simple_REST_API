@@ -10,8 +10,8 @@
 - /quotes (GET)
 - /quotes/random (GET)
 - /quotes/add (POST)
-- /quotes/<id> (PATCH)
-- /quotes/<id> (DELETE)
+- /quotes/<int:id> (PATCH)
+- /quotes/<int:id> (DELETE)
 - /health (GET)
 
 ### /quotes :

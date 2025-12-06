@@ -46,22 +46,23 @@ def add_quote():
     return jsonify({"message": "Citation added"})
 
 
-@app.patch("/quotes/<id>")
+@app.patch("/quotes/<int:id>")
 def modify_citation_by_id(id):
     allowed_keys = {"text", "author"}
     modified_keys = request.json
-    target = modified_keys
+    id_max = max([quote["id"] for quote in quotes])
     i = 0
 
-    if not modified_keys or int(id) > len(quotes):
+    if not modified_keys or id > id_max:
         abort(400)
+
     for key in modified_keys:
         if key not in allowed_keys:
             abort(400)
 
     for key in quotes:
         i += 1
-        if key['id'] == int(id):
+        if key['id'] == id:
             break
 
     if "text" in modified_keys:
@@ -76,12 +77,17 @@ def modify_citation_by_id(id):
     return jsonify({"message": "Citation modified"})
 
 
-@app.delete("/quotes/<id>")
+@app.delete("/quotes/<int:id>")
 def delete_by_id(id):
     i = 0
+    id_max = max([quote["id"] for quote in quotes])
+    
+    if id > id_max:
+        abort(400)
+
     for key in quotes:
         i += 1
-        if key['id'] == int(id):
+        if key['id'] == id:
             quotes.pop(i-1)
             break
 
