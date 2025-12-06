@@ -43,13 +43,43 @@ def add_quote():
     with open("quotes.json", "w", encoding="utf-8") as f:
         json.dump(quotes, f, indent=4, ensure_ascii=False)
     
-    return jsonify({"message": "Citation ajoutée"})
+    return jsonify({"message": "Citation added"})
+
+
+@app.patch("/quotes/<id>")
+def modify_citation_by_id(id):
+    allowed_keys = {"text", "author"}
+    modified_keys = request.json
+    target = modified_keys
+    i = 0
+
+    if not modified_keys:
+        abort(400)
+    for key in modified_keys:
+        if key not in allowed_keys:
+            abort(400)
+
+    for key in quotes:
+        i += 1
+        if key["id"] == id:
+            target = key
+
+    if "text" in modified_keys:
+        quotes[i-1]["text"] = modified_keys["text"]
+        print(target["text"])
+    if "author" in modified_keys:
+        quotes[i-1]["author"] = modified_keys["author"]
+
+
+    with open("quotes.json", "w", encoding="utf-8") as f:
+        json.dump(quotes, f, indent=4, ensure_ascii=False)
+    
+    return jsonify({"message": "Citation modified"})
 
 
 @app.get("/health")
 def health():
     return jsonify({"status": "ok", "count": len(quotes)})
-
 
 
 @app.errorhandler(400)

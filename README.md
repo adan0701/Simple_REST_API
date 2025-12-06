@@ -10,6 +10,7 @@
 - /quotes (GET)
 - /quotes/random (GET)
 - /quotes/add (POST)
+- /quotes/<id> (PATCH)
 - /health (GET)
 
 ### /quotes :
@@ -33,6 +34,16 @@
     - Il y a une requête avec un fichier json
     - Les clés "text" et "author" et uniquement celle-ci sont présentes
     - Les clés ci-dessus ne sont pas vides
+
+### /quotes/<id> : 
+
+- Méthode : PATCH
+- Modifie la citation avec l'id dans la requête, l'id est nécessaire.
+- Retourne une erreur 400 si les conditions suivantes ne sont pas remplies : 
+    - Il y a une requête avec un fichier json
+    - Les clés "text" et/ou "author" et uniquement celle-ci sont présentes
+    - La/les clés ci-dessus ne sont pas vides
+
 
 ### /health : 
 
@@ -67,7 +78,7 @@
 
 ## Exemple d'utilisation : 
 
-`127.0.0.1:5000/quote/random` retournera : 
+`127.0.0.1:5000/quotes/random` retournera : 
 
 ```json
 {
