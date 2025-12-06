@@ -7,22 +7,23 @@
 
 ## Routes :
 
-- /quote/all (GET)
-- /quote/random (GET)
-- /quote/add (POST)
+- /quotes (GET)
+- /quotes/random (GET)
+- /quotes/add (POST)
 - /health (GET)
 
-### /quote/all :
+### /quotes :
 
 - Méthode : GET
 - Retourne toutes les citations au format JSON : "text", "author" et "id" (*Voir format base de données JSON*).
+- Si un argument est donné : `?author=Einstein` (*uniquement l'auteur fonctionne*) renvoie uniquement les citations de cet auteur.
 
-### /quote/random : 
+### /quotes/random : 
 
 - Méthode : GET
 - Retourne une citation aléatoire au format JSON : "text", "author" et "id" (*Voir format base de données JSON*).
 
-### /quote/add : 
+### /quotes/add : 
 
 - Méthode : POST
 - Ajoute la citation fournie dans la requête qui doit être au format JSON (*Voir format base de données JSON*).

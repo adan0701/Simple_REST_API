@@ -9,17 +9,22 @@ with open("quotes.json", "r", encoding="utf-8") as f:
     quotes = json.load(f)
 
 
-@app.get("/quote/all")
+@app.get("/quotes")
 def all_quotes():
-    return jsonify(quotes)
+    if request.args.get("author"):
+        author = request.args.get("author")
+        filtered_quotes = [quote for quote in quotes if quote["author"].lower() == author.lower()]
+        return jsonify(filtered_quotes)
+    else:
+        return jsonify(quotes)
 
 
-@app.get("/quote/random")
+@app.get("/quotes/random")
 def random_quote():
     return jsonify(random.choice(quotes))
 
 
-@app.post("/quote/add")
+@app.post("/quotes/add")
 def add_quote():
     allowed_keys = {"text", "author"}
     new_quote = request.json
